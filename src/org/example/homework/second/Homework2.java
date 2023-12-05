@@ -1,10 +1,17 @@
 package org.example.homework.second;
 
+import org.example.homework.second.office.Office;
+import org.example.homework.second.shop.Runner;
+
 import java.util.Random;
 
 public class Homework2 {
     public static void main(String[] args) {
-
+        ex1();
+        ex2();
+        ex3();
+        ex4();
+        ex5();
     }
 
     public static void ex1() {
@@ -28,22 +35,50 @@ public class Homework2 {
         int leftUpToRightDownSum = 0;
         //С левого нижнего угла к верхнему правому
         int leftDownToRightUpSum = 0;
+
+        for (int i = 0; i < arrayOfNumbers.length; i++) {
+            leftUpToRightDownSum += arrayOfNumbers[i][i];
+        }
+        System.out.printf("Сумма диагонали с левого верхнего угла к нижнему правому = %d \n", leftUpToRightDownSum);
+        for (int i = arrayOfNumbers.length - 1; i >= 0 ; i--) {
+            leftDownToRightUpSum += arrayOfNumbers[i][arrayOfNumbers.length - i - 1];
+        }
+        System.out.printf("Сумма диагонали с левого нижнего угла к верхнему правому = %d \n", leftDownToRightUpSum);
+        System.out.println("____________________________________");
     }
 
     public static void ex2() {
         //Перевернуть массив(без сторонних классов), не создавая новый массив. Вывести на экран.
         //"перевернуть" - значит последние элементы становятся первыми и наоборот.
         int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int halfLimit = Math.round( numbers.length / 2);
+        int changeNum;
+        for (int i = 0; i < halfLimit; i++) {
+            changeNum = numbers [i];
+            numbers[i] = numbers[numbers.length - 1 - i];
+            numbers[numbers.length - 1 - i] = changeNum;
+        }
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print(numbers[i] + " ");
+        }
+        System.out.println();
+        System.out.println("____________________________________");
     }
 
     public static void ex3() {
         //Дан распределитель случайных чисел
         Random random = new Random(1);
         //Получение случайного числа
-        int number = random.nextInt(1000);
-
+        int countTry = 0;
+        int number;
+        do {
+            number = random.nextInt(1000);
+            countTry++;
+        } while (number != 999);
+        System.out.println(countTry);
         //Написать код, генерирующий случайные числа до тех пор, пока не сгенерируется 999.
         //Вывести номер попытки, с которой получилось получить случайным образом число 999.
+        System.out.println("____________________________________");
     }
 
     public static void ex4() {
@@ -63,7 +98,8 @@ public class Homework2 {
         //Создать магазин с работниками выше.
         //Вызвать у магазина печать.
         //Вызвать у каждого работника магазина хвастовство его вещами (достать работника из магазина).
-
+        Runner.start();
+        System.out.println("____________________________________");
     }
 
     public static void ex5() {
@@ -84,5 +120,7 @@ public class Homework2 {
         //Секретаря.
         //Создать офис
         //Запустить рабочий день в офисе
+        org.example.homework.second.office.Runner.start();
+        System.out.println("____________________________________");
     }
 }
