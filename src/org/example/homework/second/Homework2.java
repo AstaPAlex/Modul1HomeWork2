@@ -1,6 +1,5 @@
 package org.example.homework.second;
 
-import org.example.homework.second.office.Office;
 import org.example.homework.second.shop.Runner;
 
 import java.util.Random;
@@ -51,15 +50,16 @@ public class Homework2 {
         //Перевернуть массив(без сторонних классов), не создавая новый массив. Вывести на экран.
         //"перевернуть" - значит последние элементы становятся первыми и наоборот.
         int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int halfLimit = Math.round( numbers.length / 2);
+        int halfLimit = numbers.length / 2;
+        System.out.println(halfLimit);
         int changeNum;
         for (int i = 0; i < halfLimit; i++) {
             changeNum = numbers [i];
             numbers[i] = numbers[numbers.length - 1 - i];
             numbers[numbers.length - 1 - i] = changeNum;
         }
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[i] + " ");
+        for (int number : numbers) {
+            System.out.print(number + " ");
         }
         System.out.println();
         System.out.println("____________________________________");

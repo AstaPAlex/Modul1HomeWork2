@@ -7,6 +7,6 @@ public class Runner {
         Security security = new Security("Петрович");
         Secretary  secretary = new Secretary();
         Office office = new Office(boss, manager, secretary, security);
-        office.wordDay();
+        office.workDay();
     }
 }
